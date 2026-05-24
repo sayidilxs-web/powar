@@ -1,0 +1,70 @@
+{
+  "name": "shadowrecon-ultimate",
+  "productName": "ShadowRecon Ultimate",
+  "version": "1.0.0",
+  "description": "Advanced desktop dashboard built with Electron",
+  "main": "main.js",
+  "author": {
+    "name": "ShadowRecon Labs",
+    "email": "shadowrecon@local"
+  },
+  "license": "MIT",
+  "private": true,
+
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "clean": "rimraf dist node_modules package-lock.json",
+    "reinstall": "npm install",
+    "build": "electron-builder --win",
+    "build:portable": "electron-builder --win portable",
+    "pack": "electron-builder --dir"
+  },
+
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "archiver": "^7.0.1",
+    "axios": "^1.7.9",
+    "extract-zip": "^2.0.1",
+    "node-notifier": "^10.0.1",
+    "screenshot-desktop": "^1.15.0",
+    "tesseract.js": "^5.1.0"
+  },
+
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3",
+    "rimraf": "^5.0.7"
+  },
+
+  "build": {
+    "appId": "com.shadowrecon.ultimate",
+    "productName": "ShadowRecon Ultimate",
+
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+
+    "files": [
+      "**/*",
+      "!dist/**/*",
+      "!node_modules/.cache/**/*",
+      "!**/*.map"
+    ],
+
+    "asar": true,
+
+    "compression": "normal",
+
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "build/icon.ico"
+    }
+  }
+}
